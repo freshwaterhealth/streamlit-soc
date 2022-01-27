@@ -32,7 +32,7 @@ def dispImage(url):
     return image
 
 st.title("FHI: Deviation from Natural Flow")
-url='https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Aspect_ratio_-_16x9.svg/1200px-Aspect_ratio_-_16x9.svg.png'  
+url='https://webtools.freshwaterhealthindex.org/img/dvnf.jpg'  
 img=dispImage(url)
 col1, col2=st.columns([2, 5])
 with col1:
