@@ -16,7 +16,7 @@ def dispImage(url):
     return image
 
 st.title("FHI: Species of Concern Index")
-url="https://media.globalcitizen.org/thumbnails/2d/b9/2db9ea64-dc30-44c1-8b96-cfc1960618f6/fisheries_-_fisher_holding_up_a_piranha__camilo_diaz___wwf_colombiajpg1.jpg__1600x900_q85_crop_subsampling-2.jpg"
+url='https://webtools.freshwaterhealthindex.org/img/bio.jpg'
 img=dispImage(url)
 col1, col2=st.columns([2, 5])
 with col1:
