@@ -64,11 +64,11 @@ opt = st.sidebar.radio(
      ('Simple mean', 'Mean weighted by annual average*'), index=1)
 st.sidebar.write("*recommended when input is dicharge data")
 if uploaded_file is not None:
-    try:
+    #try:
         df = pd.read_excel(uploaded_file, sheet_name = None, index_col=0)
-    except:
-        st.error("Read error. Data not in format expected")
-        st.stop()
+    #except:
+     #   st.error("Read error. Data not in format expected")
+     #   st.stop()
 
 if st.button('Calculate DvNF'):
     try:
