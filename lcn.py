@@ -36,7 +36,7 @@ def readShp(uploaded_file):
         pth=os.path.join(os.getcwd(),tmpdirname) 
         for item in os.listdir(path=pth):
             if (item.__contains__('.shp')):                  
-                return gpd.read_file(pth+"\\"+item)
+                return gpd.read_file(pth+"/"+item)
         #Reach here, means no shapefile
         st.error("No valid file found in zipped folder")
         st.stop()
@@ -58,7 +58,7 @@ def readRaster(uploaded_file):
             st.write(fig)            
             lcdata.close()
     for item in os.listdir(path=pth):
-        os.remove(pth+"\\"+item)
+        os.remove(pth+"/"+item)
     os.rmdir(tmdir)
     if arr.size == 0:
         st.error("No valid file found in zipped folder")
