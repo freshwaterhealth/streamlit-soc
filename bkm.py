@@ -146,4 +146,4 @@ if st.button('Calculate Bank Modification Index'):
         lcn=lcn+(obj.wt*obj.nlc)
     lcn=(lcn/tot_cnt)
     st.success("**Indicator Score:**")
-    st.metric("LCN", round(lcn,2), "")
+    st.metric("BKM", round(lcn,2), "")
