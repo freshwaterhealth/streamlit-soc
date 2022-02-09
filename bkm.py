@@ -32,7 +32,7 @@ def readShp(uploaded_file):
         pth=os.path.join(os.getcwd(),tmpdirname) 
         for item in os.listdir(path=pth):
             if (item.__contains__('.shp')):                  
-                return gpd.read_file(pth+"\\"+item)
+                return gpd.read_file(pth+"/"+item)
         #Reach here, means no shapefile
         st.error("No valid file found in zipped folder")
         st.stop()
@@ -45,13 +45,13 @@ def readRaster(uploaded_file):
     pth=os.path.join(os.getcwd(),tmdir)  
     for item in os.listdir(path=pth):
         if (item.__contains__('.tif')):            
-            lcdata = rxr.open_rasterio(pth+"\\"+item,masked=False)
+            lcdata = rxr.open_rasterio(pth+"/"+item,masked=False)
             lcdata_clipped=lcdata.rio.clip(basindata.geometry.apply(mapping),basindata.crs)
             no_data=lcdata_clipped.rio.nodata          
             arr=np.array(lcdata_clipped[0,:,:])                       
             lcdata.close()
     for item in os.listdir(path=pth):
-        os.remove(pth+"\\"+item)
+        os.remove(pth+"/"+item)
     os.rmdir(tmdir)
     
     fig, ax = plt.subplots(figsize=(10, 5))
