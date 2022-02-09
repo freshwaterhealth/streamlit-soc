@@ -25,7 +25,7 @@ blnShapeLoaded=False
 blnRasterLoaded=False
 blnRasterLookup=False
 
-@st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True, ttl=900)
 def readShp(uploaded_file):
     with tempfile.TemporaryDirectory() as tmpdirname:
         try:
@@ -41,7 +41,7 @@ def readShp(uploaded_file):
         st.error("No valid file found in zipped folder")
         st.stop()
 
-@st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True, ttl=900)
 def readRaster(uploaded_file):
     tmdir='rastemp'+str(rr)
     with zipfile.ZipFile(uploaded_file) as z:
@@ -49,7 +49,7 @@ def readRaster(uploaded_file):
     pth=os.path.join(os.getcwd(),tmdir)  
     for item in os.listdir(path=pth):
         if (item.__contains__('.tif')):            
-            lcdata = rxr.open_rasterio(pth+"\\"+item,masked=False)
+            lcdata = rxr.open_rasterio(pth+"/"+item,masked=False)
             lcdata_clipped=lcdata.rio.clip(basindata.geometry.apply(mapping),basindata.crs)
             no_data=lcdata_clipped.rio.nodata          
             arr=np.array(lcdata_clipped[0,:,:])
