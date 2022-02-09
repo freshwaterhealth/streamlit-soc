@@ -25,11 +25,14 @@ blnShapeLoaded=False
 blnRasterLoaded=False
 blnRasterLookup=False
 
-@st.cache(ttl=900)
+@st.cache(suppress_st_warning=True)
 def readShp(uploaded_file):
     with tempfile.TemporaryDirectory() as tmpdirname:
-        with zipfile.ZipFile(uploaded_file) as z:
-            z.extractall(tmpdirname)   
+        try:
+            with zipfile.ZipFile(uploaded_file) as z:
+                z.extractall(tmpdirname) 
+        except:
+            st.error("Faliure extracting basin shapefile")
         pth=os.path.join(os.getcwd(),tmpdirname) 
         for item in os.listdir(path=pth):
             if (item.__contains__('.shp')):                  
@@ -38,7 +41,7 @@ def readShp(uploaded_file):
         st.error("No valid file found in zipped folder")
         st.stop()
 
-@st.cache(suppress_st_warning=True, ttl=900)
+@st.cache(suppress_st_warning=True)
 def readRaster(uploaded_file):
     tmdir='rastemp'+str(rr)
     with zipfile.ZipFile(uploaded_file) as z:
