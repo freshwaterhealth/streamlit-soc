@@ -29,7 +29,7 @@ with col2:
                 """)
 with st.expander("Input requirements", expanded=False):
     st.markdown("""
-                **Process data using IUCN Redlist webtool.** [Access here](https:///www.iucnredlist.org/serach/map)
+                **Process data using IUCN Redlist webtool.** [Access here](https:///www.iucnredlist.org/search/map)
                     
                     1. Select 'Map' and draw a polygon around area of interest.
                     2. Using 'Search filters', select appropraite habitats (such as 'Wetlands').
@@ -70,7 +70,7 @@ if blnFirstAssessment:
         iYear=st.number_input('Year of previous assessment', value=2000, max_value=2020, min_value=1900,step =1) 
     
 st.subheader("Enter data on the number of species:")
-blnLocalSpeciesData=st.checkbox("Data from local assessement (Not just IUCN Redlits) available ", value=False)
+blnLocalSpeciesData=st.checkbox("Data from local assessement (Not just IUCN Redlists) available ", value=False)
 col1, col2 = st.columns(2)
 with col1:
     ncr = st.number_input('IUCN Red list critically endangered species [CR]',value=0.0, min_value=0.0)
