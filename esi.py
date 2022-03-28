@@ -180,6 +180,7 @@ if st.button('Calculate ESI'):
     nF1=0.
     nF2=0.
     nF2len=0.
+    suF3=0.
     F1=0.
     F2=0.
     F31=0.
@@ -240,9 +241,10 @@ if st.button('Calculate ESI'):
                     nF1=nF1+1
                 nF2+=suF2cnt
                 nF2len+=suF2len
+                suF3+=suF3sum
             F1=100*(nF1/nSU)
             F2=100*(nF2/nF2len)
-            nse=suF3sum/nF2len
+            nse=suF3/nF2len
             F31=100*(nse/(nse+1))
             if nF2>0:
                 mse=suF3sum/nF2
@@ -279,9 +281,10 @@ if st.button('Calculate ESI'):
                     nF1=nF1+1
                 nF2+=suF2cnt
                 nF2len+=suF2len
+                suF3+=suF3sum
             F1=100*(nF1/nSU)
             F2=100*(nF2/nF2len)
-            nse=suF3sum/nF2len
+            nse=suF3/nF2len
             F31=100*(nse/(nse+1))
             if nF2>0:
                 mse=suF3sum/nF2
