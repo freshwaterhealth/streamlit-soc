@@ -15,20 +15,23 @@ import tempfile
 from shapely.geometry import mapping
 import gc
 
-@st.cache(ttl=900)
+@st.cache(suppress_st_warning=True, ttl=900)
 def readShp(uploaded_file):
     with tempfile.TemporaryDirectory() as tmpdirname:
-        with zipfile.ZipFile(uploaded_file) as z:
-            z.extractall(tmpdirname)   
+        try:
+            with zipfile.ZipFile(uploaded_file) as z:
+                z.extractall(tmpdirname) 
+        except:
+            st.error("Faliure extracting basin shapefile")
         pth=os.path.join(os.getcwd(),tmpdirname) 
         for item in os.listdir(path=pth):
             if (item.__contains__('.shp')):                  
-                return gpd.read_file(pth+"\\"+item)
+                return gpd.read_file(pth+"/"+item)
         #Reach here, means no shapefile
         st.error("No valid file found in zipped folder")
         st.stop()
         
-#@st.cache(ttl=900)
+@st.cache(suppress_st_warning=True, ttl=900)
 def readRaster():
     #url="gw\\tau.tif" 
     url = 'https://webtools.freshwaterhealthindex.org/asset/tau.tif'
