@@ -41,10 +41,10 @@ def readRaster(uploaded_file):
     pth=os.path.join(os.getcwd(),tmdir)  
     for item in os.listdir(path=pth):
         if (item.__contains__('.tif')):            
-        lcdata = rxr.open_rasterio(pth+"/"+item,masked=False)
-        lcdata_clipped=lcdata.rio.clip(basindata.geometry.apply(mapping),basindata.crs)         
-        arr=np.array(lcdata_clipped[0,:,:])    
-        lcdata.close()
+            lcdata = rxr.open_rasterio(pth+"/"+item,masked=False)
+            lcdata_clipped=lcdata.rio.clip(basindata.geometry.apply(mapping),basindata.crs)         
+            arr=np.array(lcdata_clipped[0,:,:])    
+            lcdata.close()
     arr[arr==-999.0]=np.nan
     return np.nanmean(arr)
 
