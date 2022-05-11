@@ -63,7 +63,7 @@ with st.expander("Input requirements", expanded=False):
                     
                     1. Basin shapefile: Atleast .shp,.shx,.dbf and.prj as a zipped file. 
                     2. Global groundwater raster trends
-                For 2: [download here](https://drive.google.com/file/d/13pJrzC9KQSnDVljdIcFNQX7Dta4_CzZ4/view?usp=sharing)
+                For 2: [download here](https://drive.google.com/file/d/13pJrzC9KQSnDVljdIcFNQX7Dta4_CzZ4/view?usp=sharing).
                 The code uses global results from [Regional Analysis of GRACE Groundwater Data](https://doi.org/10.1111/1752-1688.12968) and should be only used in absence of local data of groundwater.
                 A raster is created by applying a Seasonal Mann-Kendall (SKM) test on the results to obtain overall direction of groundwater storage.
                 Tau value (from the SKM) is used to calcuate the index.
