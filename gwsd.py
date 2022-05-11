@@ -31,7 +31,7 @@ def readShp(uploaded_file):
 #@st.cache(ttl=900)
 def readRaster():
     #url="gw\\tau.tif" 
-    url = 'https://webtools.freshwaterhealthindex.org/img/tau.tif'
+    url = 'https://webtools.freshwaterhealthindex.org/asset/tau.tif'
     try:           
         lcdata = rxr.open_rasterio(url,masked=False)
     except:
