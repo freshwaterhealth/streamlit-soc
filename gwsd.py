@@ -14,6 +14,9 @@ import numpy as np
 import tempfile
 from shapely.geometry import mapping
 import gc
+import random
+
+rr=random.randrange(10,20000,1)
 
 @st.cache(suppress_st_warning=True, ttl=900)
 def readShp(uploaded_file):
@@ -31,16 +34,17 @@ def readShp(uploaded_file):
         st.error("No valid file found in zipped folder")
         st.stop()
         
-def readRaster():
-    url = 'webtools.freshwaterhealthindex.org/asset/tau.tif'
-    try:           
-        lcdata = rxr.open_rasterio(url,masked=False)
-    except:
-        st.error("Faliure reading Raster URL")
-    lcdata_clipped=lcdata.rio.clip(basindata.geometry.apply(mapping),basindata.crs)         
-    arr=np.array(lcdata_clipped[0,:,:])
-    
-    lcdata.close()
+def readRaster(uploaded_file):
+    tmdir='rastemp'+str(rr)
+    with zipfile.ZipFile(uploaded_file) as z:
+        z.extractall(tmdir) 
+    pth=os.path.join(os.getcwd(),tmdir)  
+    for item in os.listdir(path=pth):
+        if (item.__contains__('.tif')):            
+        lcdata = rxr.open_rasterio(pth+"/"+item,masked=False)
+        lcdata_clipped=lcdata.rio.clip(basindata.geometry.apply(mapping),basindata.crs)         
+        arr=np.array(lcdata_clipped[0,:,:])    
+        lcdata.close()
     arr[arr==-999.0]=np.nan
     return np.nanmean(arr)
 
@@ -71,9 +75,12 @@ if uploaded_file is not None:
         basindata=readShp(uploaded_file)
     except:
         st.error("Faliure loading basin shapefile")
-    
+
+st.sidebar.subheader("Step 2: Upload Landcover Raster File")
+uploaded_file = st.sidebar.file_uploader("Upload Zipped Geotiff",type=['zip'])
+if uploaded_file is not None:
     try:
-        sc=100*norm(readRaster())
+        sc=100*norm(readRaster(uploaded_file))
         st.success("**Indicator Score:**")
         st.metric("GWsd", round(sc,2), "")
         gc.collect()
