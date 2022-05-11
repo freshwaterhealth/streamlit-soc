@@ -31,9 +31,7 @@ def readShp(uploaded_file):
         st.error("No valid file found in zipped folder")
         st.stop()
         
-@st.cache(suppress_st_warning=True, ttl=900)
 def readRaster():
-    #url="gw\\tau.tif" 
     url = 'https://webtools.freshwaterhealthindex.org/asset/tau.tif'
     try:           
         lcdata = rxr.open_rasterio(url,masked=False)
