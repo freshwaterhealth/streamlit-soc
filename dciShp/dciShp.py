@@ -42,8 +42,8 @@ def readShp(uploaded_file):
             z.extractall(tmpdirname)   
         pth=os.path.join(os.getcwd(),tmpdirname) 
         for item in os.listdir(path=pth):
-            if (item.__contains__('.shp')): 
-                return gpd.read_file(pth+"\\"+item)
+            if (item.__contains__('.shp')):          
+                return gpd.read_file(pth+"/"+item)
         #Reach here, means no shapefile
         st.error("No valid file found in zipped folder")
         st.stop()
