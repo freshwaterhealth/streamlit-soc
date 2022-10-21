@@ -204,6 +204,7 @@ if uploaded_file is not None:
             diagnotics.write(df_riv.head())
         
         val=row1_col2.text_input("Coordinates (in format: xx,yy):","")
+        row1_col2.markdown("[See how here](https://webtools.freshwaterhealthindex.org/asset/webAppHelp.html)")
         if (val!=""):
              v=val.split(",")  
              d={'x':[v[0]],'y':[v[1]]}
@@ -244,7 +245,7 @@ if uploaded_file is not None:
         inputs.subheader("Set obstruction identifiers and default passability")
         c1,c2=inputs.columns([1,1])
         optName=c1.selectbox( 'Set obstruction names as?', colNames2)
-        optP=c2.selectbox( 'Set obstruction passapbility as?', colNames3)
+        optP=c2.selectbox( 'Set obstruction passability as?', colNames3)
             
         if optName == "Same as index":
             df_dam['damName']=df_dam['index']
