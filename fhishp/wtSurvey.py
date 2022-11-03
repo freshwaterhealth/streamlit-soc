@@ -220,14 +220,14 @@ if uploaded_file is not None:
             with col2:
                 dt=pd.DataFrame.from_dict(wtDict[x]) 
                 t= str(wtDict[x]["title"]) +" [Consensus: "+str(round(wtDict[x]["con"],2))+"%]"
-                fig = px.pie(dt, values='Weight', names='Indicators', title=t,hole=.3)
+                fig = px.pie(dt, values='Weight', names='Indicator', title=t,hole=.3)
                 fig.update_layout(showlegend=False)
                 st.plotly_chart(fig, use_container_width=True)
         if cnt==3:
             with col3:
                 dt=pd.DataFrame.from_dict(wtDict[x]) 
                 t= str(wtDict[x]["title"]) +" [Consensus: "+str(round(wtDict[x]["con"],2))+"%]"
-                fig = px.pie(dt, values='Weight', names='Indicators', title=t,hole=.3)
+                fig = px.pie(dt, values='Weight', names='Indicator', title=t,hole=.3)
                 fig.update_layout(showlegend=False)
                 st.plotly_chart(fig, use_container_width=True)
         cnt=cnt+1
