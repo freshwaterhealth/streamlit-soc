@@ -241,7 +241,7 @@ if uploaded_file is not None:
         return df.to_csv().encode('utf-8')
     
     for x in wtDict:
-        weightFinal["indicators"]=weightFinal["indicators"]+wtDict[x]["Indicators"]
+        weightFinal["indicators"]=weightFinal["indicators"]+wtDict[x]["Indicator"]
         weightFinal["weights"]=weightFinal["weights"]+wtDict[x]["Weight"]
     dfW=pd.DataFrame.from_dict(weightFinal)
     csv = convert_df(dfW)
