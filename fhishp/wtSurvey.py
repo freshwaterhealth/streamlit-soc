@@ -14,63 +14,63 @@ wtDict= {
         "ES":{
                 "n":3,
                 "title": "Ecosystem Services",
-                "Indicators":["Provisioning","Regulation","Cultural"],
+                "Indicator":["Provisioning","Regulation","Cultural"],
                 "con":0.0,
                 "Weight":[]
                 },
         "ES1":{
                 "n":2,
                 "title":"Provisioning",
-                "Indicators":["Water Supply Reliability","Biomass"],
+                "Indicator":["Water Supply Reliability","Biomass"],
                 "con":0.0,
                 "Weight":[]
                 },
         "ES2":{
                 "n":4,
                 "title":"Regulation",
-                "Indicators":["Sediment Regulation","Water Quality Regulation","Flood Regulation","Disease Regulation"],
+                "Indicator":["Sediment Regulation","Water Quality Regulation","Flood Regulation","Disease Regulation"],
                 "con":0.0,
                 "Weight":[]
                 },
         "ES3":{
                 "n":2,
                 "title":"Cultural",
-                "Indicators":["Conservation Areas","Recreation"],
+                "Indicator":["Conservation Areas","Recreation"],
                 "con":0.0,
                 "Weight":[]
                 },
         "GS":{
                 "n":4,
                 "title":"Governance & Stakeholders",
-                "Indicators":["Enabling Environment","Stakeholder Engagement","Vision and Adaptive Governance","Effectiveness"],
+                "Indicator":["Enabling Environment","Stakeholder Engagement","Vision and Adaptive Governance","Effectiveness"],
                 "con":0.0,
                 "Weight":[]
                 },
         "GS1":{
                 "n":5,
                 "title":"Enabling Environment",
-                "Indicators":["Water Resource Management","Rights to Resource Use","Incentives and Regulations","Financial Capacity","Technical Capacity"],
+                "Indicator":["Water Resource Management","Rights to Resource Use","Incentives and Regulations","Financial Capacity","Technical Capacity"],
                 "con":0.0,
                 "Weight":[]
                 },
         "GS2":{
                 "n":2,
                 "title":"Stakeholder Engagement",
-                "Indicators":["Information Access","Engagement in Decision-Making"],
+                "Indicator":["Information Access","Engagement in Decision-Making"],
                 "con":0.0,
                 "Weight":[]
                 },
         "GS3":{
                 "n":2,
                 "title":"Vision and Adaptive Governance",
-                "Indicators":["Strategic Planning","Monitoring Mechanisms"],
+                "Indicator":["Strategic Planning","Monitoring Mechanisms"],
                 "con":0.0,
                 "Weight":[]
                 },
         "GS4":{
                 "n":3,
                 "title":"Effectiveness",
-                "Indicators":["Enforcement & Compliance","Distribution of Benefits","Water-Related Conflict"],
+                "Indicator":["Enforcement & Compliance","Distribution of Benefits","Water-Related Conflict"],
                 "con":0.0,
                 "Weight":[]
                 },
@@ -204,7 +204,7 @@ if uploaded_file is not None:
         
         for j in range(wtDict[x]["n"]):
             wt=dfweight.iloc[i+j]
-            wtDict[x]["Weight"].append(wt)
+            wtDict[x]["Weight"].append(round(wt,4))
         i=i+wtDict[x]["n"]
         #st.write(wtDict[x]["Weight"])
         #st.write(wtDict[x]["con"])
@@ -213,7 +213,7 @@ if uploaded_file is not None:
             with col1:
                 dt=pd.DataFrame.from_dict(wtDict[x]) 
                 t= str(wtDict[x]["title"]) +" [Consensus: "+str(round(wtDict[x]["con"],2))+"%]"
-                fig = px.pie(dt, values='Weight', names='Indicators', title=t,hole=.3)
+                fig = px.pie(dt, values='Weight', names='Indicator', title=t,hole=.3)
                 fig.update_layout(showlegend=False)
                 st.plotly_chart(fig, use_container_width=True)
         if cnt==2:
