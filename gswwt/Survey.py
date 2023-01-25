@@ -294,9 +294,10 @@ if uploaded_file2 is not None:
     i3=25.0*(((dfval.q31 + dfval.q32 + dfval.q33 + dfval.q34 + dfval.q35)/5)-1)
     indDict["GS1"]["Value"].append(round(i3,2))
     i4=25.0*(((dfval.q41 + dfval.q42 + dfval.q43)/3)-1)
-    indDict["GS1"]["Value"].append(round(i4,2))
+    
     i5=25.0*(((dfval.q51 + dfval.q52 + dfval.q53 + dfval.q54 + dfval.q55)/5)-1)
     indDict["GS1"]["Value"].append(round(i5,2))
+    indDict["GS1"]["Value"].append(round(i4,2))
     i6=25.0*(((dfval.q61 + dfval.q62 + dfval.q63 + dfval.q64)/4)-1)
     indDict["GS2"]["Value"].append(round(i6,2))
     i7=25.0*(((dfval.q71 + dfval.q72 + dfval.q73 + dfval.q74)/4)-1)
