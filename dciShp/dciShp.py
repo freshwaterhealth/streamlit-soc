@@ -29,7 +29,7 @@ def convert_wgs_to_utm(lon: float, lat: float):
     return epsg_code
 
 #from plotly.subplots import make_subplots
-@st.experimental_singleton
+
 def dispImage(url):
     urllib.request.urlretrieve(url,"lbl.png")
     image=Image.open("lbl.png")
